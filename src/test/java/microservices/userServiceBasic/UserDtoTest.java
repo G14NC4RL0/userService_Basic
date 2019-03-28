@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class UserTest {
+public class UserDtoTest {
 
     @Test
     public void setName() {

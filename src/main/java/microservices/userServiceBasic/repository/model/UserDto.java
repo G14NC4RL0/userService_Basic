@@ -1,4 +1,4 @@
-package microservices.userServiceBasic;
+package microservices.userServiceBasic.repository.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import microservices.utils.emailServices;
 
 @Entity
-public class User {
+public class UserDto {
 
     private @Id
     @GeneratedValue
@@ -17,10 +17,10 @@ public class User {
     private String address;
     private String nationality;
 
-    public User() {
+    public UserDto() {
     }
 
-    public User(String name, String lastName) {
+    public UserDto(String name, String lastName) {
         super();
         this.name = name;
         this.lastName = lastName;
@@ -29,7 +29,7 @@ public class User {
         this.nationality = "-";
     }
 
-    public User(long id, String name, String lastName, String email, String address, String nationality) {
+    public UserDto(long id, String name, String lastName, String email, String address, String nationality) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -40,7 +40,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "UserDto{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -78,12 +78,10 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-        //TODO set validations rules
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-        //TODO set validations rules
     }
 
     public void setEmail(String email) {
@@ -91,16 +89,13 @@ public class User {
         if (emailServices.isValidEmailAddress(email)) {
             this.email = email;
         }
-        //TODO email validation else condition
     }
 
     public void setAddress(String address) {
         this.address = address;
-        //TODO set validations rules
     }
 
     public void setNationality(String nationality) {
         this.nationality = nationality;
-        //TODO validate nationality against a nationalities' list
     }
 }
