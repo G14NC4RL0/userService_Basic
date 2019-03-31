@@ -9,24 +9,21 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-    // All the logic
 
-    private final EmailValidation emailValidation;
-    private final UserRepository userRepository;
-    private final UserMapper userMapper;
+	private final EmailValidation emailValidation;
+	private final UserRepository userRepository;
+	private final UserMapper userMapper;
 
-    @Autowired
-    public UserService(EmailValidation emailValidation, UserRepository userRepository, UserMapper userMapper) {
-        this.emailValidation = emailValidation;
-        this.userRepository = userRepository;
-        this.userMapper = userMapper;
-    }
+	@Autowired
+	public UserService(EmailValidation emailValidation, UserRepository userRepository, UserMapper userMapper) {
+		this.emailValidation = emailValidation;
+		this.userRepository = userRepository;
+		this.userMapper = userMapper;
+	}
 
 
-    public void saveUser(User user) {
-//        if (emailValidation.isValidEmailAddress(user.getEmail())) {
-//            throw new IllegalArgumentException("Email is invalid");
-//        }
-//        userRepository.save(userMapper.mapTo(user));
-    }
+	public void saveUser(User user) {
+		userRepository.save(userMapper.mapToUserDto(user));
+	}
 }
+
