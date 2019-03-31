@@ -8,14 +8,14 @@ import javax.mail.internet.InternetAddress;
 @Component
 public class EmailValidation {
 
-    public boolean isValidEmailAddress(String email) {
-        boolean valid = true;
-        try {
-            InternetAddress emailAddr = new InternetAddress(email);
-            emailAddr.validate();
-        } catch (AddressException ex) {
-            valid = false;
-        }
-        return valid;
-    }
+	public boolean isValidEmailAddress(String email) {
+		boolean valid = true;
+		try {
+			InternetAddress emailAddr = new InternetAddress(email);
+			emailAddr.validate();
+		} catch (AddressException ex) {
+			valid = false;
+		}
+		return valid;
+	}
 }

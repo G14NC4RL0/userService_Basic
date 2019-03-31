@@ -1,5 +1,6 @@
 package microservices.userServiceBasic.api;
 
+import microservices.userServiceBasic.api.mapper.UserApiMapper;
 import microservices.userServiceBasic.api.model.UserDetails;
 import microservices.userServiceBasic.api.response.UserResponse;
 import microservices.userServiceBasic.domain.UserService;
@@ -13,18 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserApiRest implements UserApi {
 
-    private UserService userService;
+	private UserService userService;
 
-    @Autowired
-    public UserApiRest(UserService userService) {
-        this.userService = userService;
-    }
+	@Autowired
+	public UserApiRest(UserService userService) {
+		this.userService = userService;
+	}
 
-    @Override
-    @RequestMapping(value = "/user", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<UserResponse> createUser(@RequestBody UserDetails user) {
+	@Override
+	@RequestMapping(value = "/user", method = RequestMethod.POST, produces = "application/json")
+	public ResponseEntity<UserResponse> createUser(@RequestBody UserDetails user) {
 
-        userService.saveUser(user);
-        return ResponseEntity.ok(new UserResponse());
-    }
+		userService.saveUser(UserApiMapper.mapToUser(user));
+		return ResponseEntity.ok(new UserResponse());
+	}
 }

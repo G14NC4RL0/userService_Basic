@@ -6,5 +6,7 @@ import org.springframework.http.ResponseEntity;
 
 public interface UserApi {
 
-    ResponseEntity<UserResponse> createUser(UserDetails user);
+	ResponseEntity<UserResponse> createUser(UserDetails user);
+
+
 }

@@ -7,13 +7,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserApiMapper {
 
-    public UserDetails mapFrom(User user) {
+	public static UserDetails mapToUserDetails(User user) {
 
-        return new UserDetails();
-    }
+		return new UserDetails(user.getName(), user.getLastName(), user.getEmail());
+	}
 
-    public User mapTo(UserDetails userDetails) {
+	public static User mapToUser(UserDetails userDetails) {
 
-        return new User();
-    }
+		return new User(userDetails.getName(), userDetails.getLastName(), userDetails.getEmail());
+	}
 }
