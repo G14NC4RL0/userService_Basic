@@ -1,33 +1,29 @@
 package microservices.userServiceBasic.api.response;
 
 
-public class UserResponse {
+import microservices.userServiceBasic.api.model.UserDetails;
 
-	private String id;
-	private String name;
-	private String email;
+import java.util.UUID;
 
-	public String getId() {
-		return id;
+public class UserResponse extends UserDetails {
+
+	private boolean responseSuccessful;
+
+	public UserResponse(UUID id, String name, String lastName, String email) {
+		super(id, name, lastName, email);
+		this.setResponseSuccessful(true);
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public UserResponse(UserDetails userDetails) {
+		super(userDetails.getId(), userDetails.getFirstName(), userDetails.getLastName(), userDetails.getEmail());
+		this.setResponseSuccessful(true);
 	}
 
-	public String getName() {
-		return name;
+	public boolean isResponseSuccessful() {
+		return responseSuccessful;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setResponseSuccessful(boolean responseSuccessful) {
+		this.responseSuccessful = responseSuccessful;
 	}
 }

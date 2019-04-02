@@ -8,6 +8,8 @@ import javax.mail.internet.InternetAddress;
 @Component
 public class EmailValidation {
 
+	public static Throwable emailValidationException;
+
 	public boolean isValidEmailAddress(String email) {
 		boolean valid = true;
 		try {
