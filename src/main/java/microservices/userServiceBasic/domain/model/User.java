@@ -4,23 +4,23 @@ import java.util.UUID;
 
 public class User {
 
-	private UUID id;
+	private UUID uuid;
 	private String name;
 	private String lastName;
 	private String email;
-	private String address;
-	private String nationality;
 
-	public User(String name, String lastName, String email) {
-		this.id = UUID.randomUUID();
+	public User(UUID uuid, String name, String lastName, String email) {
+		this.uuid = uuid;
 		this.name = name;
 		this.lastName = lastName;
 		this.email = email;
 	}
 
-	public UUID getId() {
-		return id;
+	public UUID getUuid() {
+		return uuid;
 	}
+
+	public void setUuid(UUID uuid) { this.uuid = uuid; }
 
 	public String getName() {
 		return name;
@@ -44,21 +44,5 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getNationality() {
-		return nationality;
-	}
-
-	public void setNationality(String nationality) {
-		this.nationality = nationality;
 	}
 }
