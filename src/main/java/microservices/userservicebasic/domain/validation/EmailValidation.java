@@ -10,14 +10,12 @@ public class EmailValidation {
 
 	public static Throwable emailValidationException;
 
-	public boolean isValidEmailAddress(String email) {
-		boolean valid = true;
+	public void isValidEmailAddress(String email) {
 		try {
 			InternetAddress emailAddr = new InternetAddress(email);
 			emailAddr.validate();
 		} catch (AddressException ex) {
-			valid = false;
+			throw new RuntimeException("email invalid");
 		}
-		return valid;
 	}
 }
