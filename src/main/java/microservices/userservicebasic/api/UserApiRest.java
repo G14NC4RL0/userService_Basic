@@ -22,7 +22,7 @@ public class UserApiRest implements UserApi {
 	}
 
 	@Override
-	@RequestMapping(value = "/user", method = RequestMethod.POST, produces = "application/json")
+	@PostMapping(value = "/user", produces = "application/json")
 	public ResponseEntity<UserResponse> createUser(@RequestBody UserDetails userDetails) {
 
 		User user = userService.saveUser(userDetails);
@@ -30,7 +30,7 @@ public class UserApiRest implements UserApi {
 	}
 
 	@Override
-	@RequestMapping(value = "/user/{userUuid}", method = RequestMethod.GET, produces = "application/json")
+	@GetMapping(value = "/user/{userUuid}", produces = "application/json")
 	public ResponseEntity<UserResponse> getUser(@PathVariable UUID userUuid) {
 
 		User user = userService.getUser(userUuid);

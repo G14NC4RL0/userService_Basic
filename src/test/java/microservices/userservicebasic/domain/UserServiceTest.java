@@ -7,6 +7,8 @@ import microservices.userservicebasic.domain.model.UserDetails;
 import microservices.userservicebasic.domain.validation.EmailValidation;
 import microservices.userservicebasic.repository.UserRepository;
 import microservices.userservicebasic.repository.model.UserDto;
+import org.assertj.core.api.Assertions;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,11 +17,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import javax.mail.internet.AddressException;
 import java.util.Optional;
 import java.util.UUID;
-
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceTest {
@@ -47,7 +47,7 @@ public class UserServiceTest {
 	}
 
 	@Test
-	public void saveUserWithValidUserDetails() {
+	public void saveUserWithValidUserDetails() throws AddressException {
 		// Given
 		UserDetails userDetails = new UserDetails(FIRST_NAME, LAST_NAME, EMAIL);
 		UserDto userDto = new UserDto(USER_UUID, FIRST_NAME, LAST_NAME, EMAIL);
@@ -64,7 +64,7 @@ public class UserServiceTest {
 		User resultUser = userService.saveUser(userDetails);
 
 		// Then
-		assertEquals(expectedUser, resultUser);
+		Assert.assertEquals(expectedUser, resultUser);
 		Mockito.verify(emailValidation, Mockito.times(1))
 				.isValidEmailAddress(EMAIL);
 	}
@@ -85,7 +85,7 @@ public class UserServiceTest {
 		User userResult = userService.getUser(userUuid);
 
 		// Then
-		assertEquals(expectedUser, userResult);
+		Assert.assertEquals(expectedUser, userResult);
 	}
 
 	@Test
@@ -97,7 +97,7 @@ public class UserServiceTest {
 		Mockito.when(userRepository.findById(userUuid))
 				.thenReturn(Optional.empty());
 
-		assertThatExceptionOfType(UserNotFoundException.class)
+		Assertions.assertThatExceptionOfType(UserNotFoundException.class)
 				.isThrownBy(() -> userService.getUser(userUuid))
 				.withMessage("User ID: " + userUuid + " not found");
 	}
