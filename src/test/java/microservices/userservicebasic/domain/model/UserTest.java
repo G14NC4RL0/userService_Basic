@@ -29,35 +29,4 @@ public class UserTest {
 		// Then
 		assertEquals(USER_UUID, uuidResult);
 	}
-
-	// Leaving this code to discuss later in person about testing setters and getters
-
-	@Test
-	public void setUuid() {
-
-	}
-
-	@Test
-	public void getName() {
-	}
-
-	@Test
-	public void setName() {
-	}
-
-	@Test
-	public void getLastName() {
-	}
-
-	@Test
-	public void setLastName() {
-	}
-
-	@Test
-	public void getEmail() {
-	}
-
-	@Test
-	public void setEmail() {
-	}
 }

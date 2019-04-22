@@ -8,14 +8,8 @@ import javax.mail.internet.InternetAddress;
 @Component
 public class EmailValidation {
 
-	public static Throwable emailValidationException;
-
-	public void isValidEmailAddress(String email) {
-		try {
+	public void isValidEmailAddress(String email) throws AddressException {
 			InternetAddress emailAddr = new InternetAddress(email);
 			emailAddr.validate();
-		} catch (AddressException ex) {
-			throw new RuntimeException("email invalid");
-		}
 	}
 }
